@@ -1,0 +1,46 @@
+version: '3.7'
+
+networks:
+  myNetwork:
+    driver: bridge
+
+services:
+  oracle:
+    image: container-registry.oracle.com/database/express
+    container_name: bank3
+    ports:
+      - '1521:1521'
+    environment:
+      - ORACLE_ALLOW_REMOTE=true
+      - ORACLE_DISABLE_ASYNCH_IO=true
+      - ORACLE_PWD=oracle
+      - ORACLE_CHARACTERSET=AL32UTF8
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+      - oracle_fast_recovery_area:/opt/oracle/oradata/fast_recovery_area
+    networks:
+      - myNetwork
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-app
+    ports:
+      - '3000:3000'
+    environment:
+      - DB_HOST=oracle
+      - DB_PORT=1521
+      - DB_USER=system
+      - DB_PASSWORD=oracle
+      - DB_SERVICE=mydb
+    depends_on:
+      - oracle
+    networks:
+      - myNetwork
+    volumes:
+      - ./src:/app/src
+
+volumes:
+  oracle_data:
+  oracle_fast_recovery_area:

@@ -1,8 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { Sucursal } from './models/sucursal.model';
 
 @Injectable()
 export class SucursalService {
+  constructor(
+    @InjectRepository(Sucursal)
+    private usersRepository: Repository<Sucursal>,
+  ) {}
+
   create(createSucursalDto: Sucursal) {
     return 'This action adds a new sucursal';
   }

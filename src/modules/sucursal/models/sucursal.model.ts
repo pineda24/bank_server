@@ -1,36 +1,16 @@
-import { AutoMap } from '@nartc/automapper';
-import { Model, Table, Column, Length, ForeignKey, NotNull } from 'sequelize-typescript';
-import { Expose } from 'class-transformer';
+import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from 'typeorm';
 
-@Table({
-    modelName:"Sucursal",
-    tableName:"Sucursal",
-    freezeTableName:true,
-    schema:"Sucursal"
-})
-export class Sucursal extends Model<Sucursal> {
+@Entity()
+export class Sucursal {
+  @PrimaryColumn()
+  id: number;
 
-    @Expose()
-    @Column
-    idsucursal: string;
+  @Column()
+  firstName: string;
 
-    @Expose()
-    @Column
-    nombresucursal: string;
+  @Column()
+  lastName: string;
 
-    @Expose()
-    @Column
-    ciudadsucursal: number;
-
-    @Expose()
-    @Column
-    activos: number;
-
-    @Expose()
-    @Column
-    region: number;
-
-    static get modelName(): string {
-        return 'Sucursal';
-    }
+  @Column({ default: true })
+  isActive: boolean;
 }
