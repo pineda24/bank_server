@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Prestamo } from './models/prestamo.model';
 
 @Injectable()
 export class PrestamoService {
-  create(createPrestamoDto: Prestamo) {
+  create(createPrestamoDto: any) {
     return 'This action adds a new prestamo';
   }
 
@@ -15,7 +14,7 @@ export class PrestamoService {
     return `This action returns a #${id} prestamo`;
   }
 
-  update(id: string, updatePrestamoDto: Prestamo) {
+  update(id: string, updatePrestamoDto: any) {
     return `This action updates a #${id} prestamo`;
   }
 

@@ -15,7 +15,8 @@ export class SucursalService {
   }
 
   findAll() {
-    return `This action returns all sucursal`;
+    console.log("HSHJSHSHDGHDGDG")
+    return this.usersRepository.find();
   }
 
   findOne(id: string) {

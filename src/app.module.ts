@@ -6,20 +6,23 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrestamoModule } from './modules/prestamo/prestamo.module';
 import { SucursalModule } from './modules/sucursal/sucursal.module';
-import { Prestamo } from './modules/prestamo/models/prestamo.model';
 import { Sucursal } from './modules/sucursal/models/sucursal.model';
+import { ConnectionOptions } from 'typeorm';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'oracle',
-      host: 'localhost',
-      port: 3002,
-      username: 'system',
-      password: 'oracle',
-      sid: 'XE',
-      entities: [Sucursal],
-      synchronize: false,
+    TypeOrmModule.forRootAsync({
+      useFactory: () =>
+        ({
+          type: 'oracle',
+          host: '172.20.0.2', // el nombre de su contenedor Docker
+          port: 1521, // el puerto expuesto por su contenedor
+          username: 'system',
+          password: 'oracle',
+          sid: 'xe', // o el nombre de su servicio
+          synchronize: true,
+          entities: [Sucursal],
+        } as ConnectionOptions),
     }),
     SucursalModule,
     // PrestamoModule,

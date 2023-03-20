@@ -22,21 +22,16 @@
   "dependencies": {
     "@nartc/automapper": "^7.0.4",
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/sequelize": "^9.0.0",
     "@nestjs/typeorm": "^9.0.1",
     "class-transformer": "^0.5.1",
-    "node-oracledb": "^1.0.2",
-    "oracle": "^0.4.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
-    "sequelize": "^6.29.3",
-    "sequelize-oracle": "^3.3.2-0.0",
-    "sequelize-typescript": "^2.1.5",
-    "typeorm": "^0.3.12",
-    "oracledb": "^5.4.0"
+    "typeorm": "^0.3.12"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

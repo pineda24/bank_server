@@ -1,5 +1,4 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { Prestamo } from './models/prestamo.model';
 import { PrestamoService } from './prestamo.service';
 
 @Controller('prestamo')
@@ -7,7 +6,7 @@ export class PrestamoController {
   constructor(private readonly prestamoService: PrestamoService) {}
 
   @Post()
-  create(@Body() createPrestamoDto: Prestamo) {
+  create(@Body() createPrestamoDto: any) {
     return this.prestamoService.create(createPrestamoDto);
   }
 
@@ -22,7 +21,7 @@ export class PrestamoController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePrestamoDto: Prestamo) {
+  update(@Param('id') id: string, @Body() updatePrestamoDto: any) {
     return this.prestamoService.update(id, updatePrestamoDto);
   }
 

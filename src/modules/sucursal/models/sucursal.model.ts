@@ -1,16 +1,19 @@
-import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity()
+@Entity('sucursal')
 export class Sucursal {
-  @PrimaryColumn()
-  id: number;
+  @PrimaryColumn({name: 'idsucursal', type: 'varchar', length: 5})
+  id: string;
 
-  @Column()
-  firstName: string;
+  @Column({name: 'nombresucursal', type: 'varchar', length: 15})
+  nombre: string;
 
-  @Column()
-  lastName: string;
+  @Column({name: 'ciudadsucursal', type: 'varchar', length: 15})
+  ciudad: string;
 
-  @Column({ default: true })
-  isActive: boolean;
+  @Column({name: 'activos', type: 'number'})
+  activos: number;
+
+  @Column({name: 'region', type: 'number'})
+  region: number;
 }
